@@ -1,0 +1,34 @@
+-real words
+-5 char word
+-archivos de texto plano y archivos json
+-crear 365 palabra minimo en palabras5.txt
+-clase letra con estado dependiendo su situacion actual
+-ignorar tildes usar letras normales
+-6 intentos
+-teclado
+-validacion de caracter entrante, solo letras en espanol
+
+-eleccion de palabra
+ -aleatoriamente por cada fecha y registrar dicha informacion en un archivo json llamado palabras_por_fecha.json formato YYYY-MM-DD
+ -verificar que la palabra no ha sido utilizada en una fecha posterior
+
+-descargar automaticamente las palabras de el sgt url: https://github.com/javierarce/palabras/blob/master/listado-general.txt
+-agregar colores a la consola
+-registrar todas las partidas tanto exitosas como fallidas en partidas.json incluyendo fecha y hora del sistema en formato RFC 3339, palabra a adivinar y cada uno de los intentos realizados(no admitidos, admitidos)
+-limpiar la pantalla luego de cada intento para volver 
+-al finalizar la partida crear un resumen de la partida empleando caracteres unicode usando colores mostrar los intentos y resultados por intento
+
+U+2B1C
+U+1F7E8
+U+1F7E8
+
+## Modulos 
+  ### BUSINESS
+    #### GAME 
+    #### CHARACTER VALIDATOR or in UI EVENTS FROM KEYBOARD
+    #### LOG
+  ### UI
+    #### CONSOLE MODIFIER
+  ### DB
+    #### DOWNLOAD MANAGER
+    #### FILE HANDLER

@@ -7,16 +7,16 @@ namespace UI
 class Symbol
 {
     private:
-        char _symbol;
+        wchar_t _symbol;
         SymbolState _state;
     public:
         Symbol();
-        Symbol(char symbol);
+        Symbol(wchar_t symbol);
         virtual void print();
         void setState(SymbolState newState);
-        void setSymbol(char symbol);
+        void setSymbol(wchar_t symbol);
         SymbolState getState(){return _state;}
-        char getSymbol(){return _symbol;}
+        wchar_t getSymbol(){return _symbol;}
 };
 //herencia para simbolo con color
 }

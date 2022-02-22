@@ -8,10 +8,17 @@ void Word::setSymbols(){
     }
 }
 
+void Word::updateSymbols(){
+    for(int i = 0; i < _size; ++ i){
+        _symbols[i]->setSymbol(_word[i]);
+    }
+}
+
 Word::Word(int size){
     _size = size;
+    _word = L" ";
     for(int i = 0; i < _size; ++i)
-        _word += ' ';
+        _word += L' ';
     setSymbols();
 }
 
@@ -28,6 +35,39 @@ Word::~Word(){
         delete symbol;
 }
 
+void Word::setWord(std::wstring word){
+    _word = word;
+    updateSymbols();
+}
+
+bool Word::evaluate (std::wstring word, std::map<wchar_t,UI::Symbol*>* keys ){
+    std::map<wchar_t, int> wordPositions;
+    int pos = 0;
+    for(wchar_t s: word){
+        wordPositions[s] = pos++;
+    }
+    int matches = 0;
+    for(int i = 0; i < _size; ++i){
+        auto it = wordPositions.find(_word[i]);
+        if (it == wordPositions.end()){
+            _symbols[i] -> setState(NOT_IN_WORD);
+            (*keys)[_word[i]]->setState(NOT_IN_WORD);
+            continue;
+        }
+        if (it->second == i){
+            _symbols[i] -> setState(RIGHT_POSITION);
+            (*keys)[_word[i]]->setState(RIGHT_POSITION);
+            if(++matches == _size)
+                return true;
+        }
+        else{
+            _symbols[i] -> setState(INCORRECT_POSITION);
+            (*keys)[_word[i]]->setState(INCORRECT_POSITION);
+        }        
+    }
+    return false;
+}
+
 void Word::printSingleDelimiter(wchar_t delimiter){
 
     std::wcout << delimiter;    
@@ -35,6 +75,7 @@ void Word::printSingleDelimiter(wchar_t delimiter){
         _symbols[i] -> print();
         std::wcout << delimiter;
     }
+    std::wcout << std::endl;
 }
 void Word::printCompleteDelimiter(wchar_t firstDelimiter, wchar_t secondDelimiter){
     for(int i = 0; i < _size; ++i){

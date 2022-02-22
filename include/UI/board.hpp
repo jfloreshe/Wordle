@@ -21,6 +21,9 @@ public:
     void addWord(std::wstring word){words.push_back(new Word{_columns, word});}
     void addWord(int size, std::wstring word){words.push_back(new Word{size,word});}
     std::vector<Word*>* getWords(){return &words;}
+    void setWord(std::wstring word, int pos);
+    bool tryWord(std::wstring word, int posWord, std::map<wchar_t,UI::Symbol*>* keys);
+    virtual void printHeader();
     virtual void print();
 };
 

@@ -45,6 +45,8 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "map": "cpp",
-        "ctime": "cpp"
+        "ctime": "cpp",
+        "codecvt": "cpp",
+        "set": "cpp"
     }
 }

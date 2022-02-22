@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace UI;
 
-Symbol::Symbol():Symbol(' '){}
+Symbol::Symbol():Symbol(L' '){}
 
-Symbol::Symbol(char symbol)
+Symbol::Symbol(wchar_t symbol)
 {
     _symbol = symbol;
     _state = UNUSED;
@@ -15,16 +15,16 @@ void Symbol::print()
     switch (_state)
     {
     case UNUSED:
-        std::cout <<' ' << _symbol <<' ';
+        std::wcout << L' ' << _symbol << L' ';
         break;
     case NOT_IN_WORD:
-        std::cout <<'>' << _symbol <<'<';
+        std::wcout << L'>' << _symbol << L'<';
         break;
     case RIGHT_POSITION:
-        std::cout <<'=' << _symbol <<'=';
+        std::wcout << L'=' << _symbol << L'=';
         break;
     case INCORRECT_POSITION:
-        std::cout <<'<' << _symbol <<'>';
+        std::wcout << L'<' << _symbol << L'>';
         break;
     default:
         break;
@@ -34,7 +34,7 @@ void Symbol::setState(SymbolState newState)
 {
     _state = newState;
 }
-void Symbol::setSymbol(char symbol)
+void Symbol::setSymbol(wchar_t symbol)
 {
     _symbol = symbol;
 }

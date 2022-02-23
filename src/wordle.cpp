@@ -41,7 +41,7 @@ void Game::readFile(const char* filename){
     wif.close();
 }
 void Game::initDictionary(){
-    DATA::Fetcher fetcher {365};
+    DATA::Fetcher fetcher {1000};
     fetcher.generatePalabras5();
     readFile("./resources/palabras5.txt");
     int max = dictionary.size();
@@ -168,7 +168,6 @@ void Game::run(){
     std::wstring word;
     while(_state == RUNNING){
         system("clear");
-        std::wcout << _dailyWord << std::endl;
         display();
         std::wcin >> word;
         //If word is correct return currentTry + 1, else keeps in the same try
